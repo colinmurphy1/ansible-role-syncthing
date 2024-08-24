@@ -1,0 +1,31 @@
+---
+
+# Configure syncthing
+
+- name: Get information about Syncthing user
+  ansible.builtin.user:
+    name: "{{ syncthing_user }}"
+    state: present
+  register: syncthing_user_info
+  check_mode: true # Don't do anything to the user account
+
+- name: Wait for the configuration file to be created
+  become: true
+  become_user: "{{ syncthing_user }}"
+  ansible.builtin.wait_for:
+    path: "{{ syncthing_config_path }}"
+    state: present
+
+- name: Configure Syncthing
+  become: true
+  become_user: "{{ syncthing_user }}"
+  community.general.xml:
+    path: "{{ syncthing_config_path }}"
+    xpath: "{{ item.xpath }}"
+    value: "{{ item.value }}"
+  loop:
+    - xpath: "/configuration/gui/address"
+      value: "{{ syncthing_gui_address }}"
+    - xpath: "/configuration/options/urAccepted"
+      value: "{% if syncthing_usage_reporting %}3{% else %}0{% endif %}"
+  notify: Restart Syncthing

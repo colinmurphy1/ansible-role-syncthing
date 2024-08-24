@@ -1,0 +1,10 @@
+---
+
+- name: Create user for Syncthing
+  ansible.builtin.user:
+    name: "{{ syncthing_user }}"
+    system: true
+    state: present
+    create_home: true
+    home: /var/syncthing
+    shell: /usr/sbin/nologin

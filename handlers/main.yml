@@ -1,0 +1,7 @@
+---
+# handlers file for cmurphy.syncthing
+
+- name: Restart Syncthing
+  ansible.builtin.service:
+    name: "syncthing@{{ syncthing_user }}.service"
+    state: restarted

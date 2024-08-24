@@ -1,0 +1,19 @@
+---
+
+# Use Syncthing APT repository; if false will use the built-in
+syncthing_repo: true
+
+syncthing_user: syncthing
+
+# Should the role manage the user account creation
+syncthing_manage_user: true
+
+# Syncthing service
+syncthing_service_state: started
+syncthing_service_enabled: true
+
+# Listen address for the web interface
+syncthing_gui_address: "127.0.0.1:8384"
+
+# Syncthing anonymous usage reporting
+syncthing_usage_reporting: true

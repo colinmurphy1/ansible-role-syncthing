@@ -1,0 +1,19 @@
+---
+
+# Syncthing APT repository
+
+- name: Ensure gnupg is installed
+  ansible.builtin.package:
+    name: gpg
+    state: present
+
+- name: Add Syncthing signing key
+  ansible.builtin.apt_key:
+    url: https://syncthing.net/release-key.gpg
+    state: present
+
+- name: Add Syncthing repo
+  ansible.builtin.apt_repository:
+    repo: "deb https://apt.syncthing.net/ syncthing stable"
+    state: present
+    update_cache: true
