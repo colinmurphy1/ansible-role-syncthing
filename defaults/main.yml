@@ -15,5 +15,9 @@ syncthing_service_enabled: true
 # Listen address for the web interface
 syncthing_gui_address: "127.0.0.1:8384"
 
+# GUI username and password. Password is a bcrypt hash.
+syncthing_gui_user: ""
+syncthing_gui_password: ""
+
 # Syncthing anonymous usage reporting
 syncthing_usage_reporting: true

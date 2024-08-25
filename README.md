@@ -16,6 +16,8 @@ Ansible role that installs [Syncthing](https://syncthing.net) on Linux systems.
 * `syncthing_service_state`: Sets the service state
 * `syncthing_service_enabled`: Sets the service state on boot
 * `syncthing_gui_address`: Address and port the GUI uses. Defaults to `127.0.0.1:8384`, can be changed to listen on all interfaces using `0.0.0.0:8384`.
+* `syncthing_gui_user`: Username for the web GUI.
+* `syncthing_gui_password`: Bcrypt hash of the password for the web GUI.
 * `syncthing_usage_reporting`: Enables or disables anonymous usage reporting to the Syncthing developers.
 
 ## Dependencies

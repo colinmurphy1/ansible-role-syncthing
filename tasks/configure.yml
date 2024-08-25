@@ -26,6 +26,10 @@
   loop:
     - xpath: "/configuration/gui/address"
       value: "{{ syncthing_gui_address }}"
+    - xpath: "/configuration/gui/user"
+      value: "{{ syncthing_gui_user }}"
+    - xpath: "/configuration/gui/password"
+      value: "{{ syncthing_gui_password }}"
     - xpath: "/configuration/options/urAccepted"
       value: "{% if syncthing_usage_reporting %}3{% else %}0{% endif %}"
   notify: Restart Syncthing
