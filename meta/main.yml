@@ -10,6 +10,8 @@ galaxy_info:
       version: all
     - name: Ubuntu
       version: all
+    - name: ArchLinux
+      version: all
   galaxy_tags:
     - syncthing
     - sync
