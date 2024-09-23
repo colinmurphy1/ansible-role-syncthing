@@ -2,3 +2,5 @@
 # vars file for cmurphy.syncthing
 
 syncthing_config_path: "{{ syncthing_user_info.home }}/.local/state/syncthing/config.xml"
+
+syncthing_python_lxml_package: "python-lxml"

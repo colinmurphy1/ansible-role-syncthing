@@ -1,6 +1,6 @@
 ---
 
-# Use Syncthing APT repository; if false will use the built-in
+# Use Syncthing APT repository; if false will use the built-in (Debian/Ubuntu)
 syncthing_repo: true
 
 syncthing_user: syncthing
