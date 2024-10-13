@@ -23,6 +23,7 @@
     path: "{{ syncthing_config_path }}"
     xpath: "{{ item.xpath }}"
     value: "{{ item.value }}"
+    attribute: "{{ item.attribute | default(omit) }}"
   loop:
     - xpath: "/configuration/gui/address"
       value: "{{ syncthing_gui_address }}"
@@ -32,4 +33,7 @@
       value: "{{ syncthing_gui_password }}"
     - xpath: "/configuration/options/urAccepted"
       value: "{% if syncthing_usage_reporting %}3{% else %}0{% endif %}"
+    - xpath: "/configuration/gui"
+      attribute: "tls"
+      value: "{{ syncthing_gui_tls | string | lower }}"
   notify: Restart Syncthing
