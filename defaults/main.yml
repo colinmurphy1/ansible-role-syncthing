@@ -24,3 +24,6 @@ syncthing_gui_tls: false
 
 # Syncthing anonymous usage reporting
 syncthing_usage_reporting: true
+
+# Default folder location
+syncthing_default_path: "~"

@@ -36,4 +36,7 @@
     - xpath: "/configuration/gui"
       attribute: "tls"
       value: "{{ syncthing_gui_tls | string | lower }}"
+    - xpath: "/configuration/defaults/folder"
+      attribute: "path"
+      value: "{{ syncthing_default_path }}"
   notify: Restart Syncthing

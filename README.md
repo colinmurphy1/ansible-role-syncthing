@@ -18,7 +18,9 @@ Ansible role that installs [Syncthing](https://syncthing.net) on Linux systems.
 * `syncthing_gui_address`: Address and port the GUI uses. Defaults to `127.0.0.1:8384`, can be changed to listen on all interfaces using `0.0.0.0:8384`.
 * `syncthing_gui_user`: Username for the web GUI.
 * `syncthing_gui_password`: Bcrypt hash of the password for the web GUI.
+* `syncthing_gui_tls`: Enables or disables TLS on the web GUI. Defaults to false.
 * `syncthing_usage_reporting`: Enables or disables anonymous usage reporting to the Syncthing developers.
+* `syncthing_default_path`: Default path for folders. Defaults to the home directory of the syncthing user.
 
 ## Dependencies
 
