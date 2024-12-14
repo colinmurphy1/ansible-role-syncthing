@@ -19,8 +19,12 @@ syncthing_gui_address: "127.0.0.1:8384"
 syncthing_gui_user: ""
 syncthing_gui_password: ""
 
-# GUI force HTTPS
+# Force HTTPS on the GUI
 syncthing_gui_tls: false
+
+# GUI HTTPS certificate paths
+syncthing_gui_cert: ""
+syncthing_gui_cert_key: ""
 
 # Syncthing anonymous usage reporting
 syncthing_usage_reporting: true

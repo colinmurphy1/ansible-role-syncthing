@@ -19,6 +19,8 @@ Ansible role that installs [Syncthing](https://syncthing.net) on Linux systems.
 * `syncthing_gui_user`: Username for the web GUI.
 * `syncthing_gui_password`: Bcrypt hash of the password for the web GUI.
 * `syncthing_gui_tls`: Enables or disables TLS on the web GUI. Defaults to false.
+* `syncthing_gui_cert`: Path to custom certificate (pem format)
+* `syncthing_gui_cert_key`: Path to custom certificate's key file (pem format)
 * `syncthing_usage_reporting`: Enables or disables anonymous usage reporting to the Syncthing developers.
 * `syncthing_default_path`: Default path for folders. Defaults to the home directory of the syncthing user.
 
