@@ -16,6 +16,22 @@
     path: "{{ syncthing_config_path }}/config.xml"
     state: present
 
+- name: Use custom certificate for GUI
+  ansible.builtin.copy:
+      src: "{{ item.src }}"
+      dest: "{{ item.dest }}"
+      owner: "{{ syncthing_user }}"
+      group: "{{ syncthing_user }}"
+      mode: '0600'
+      remote_src: true
+      backup: true
+  loop:
+    - { src: "{{ syncthing_gui_cert }}", dest: "{{ syncthing_config_path }}/https-cert.pem" }
+    - { src: "{{ syncthing_gui_cert_key }}", dest: "{{ syncthing_config_path }}/https-key.pem" }
+  when:
+    - syncthing_gui_cert|length > 0
+    - syncthing_gui_cert_key|length > 0
+
 - name: Configure Syncthing
   become: true
   become_user: "{{ syncthing_user }}"
@@ -40,19 +56,3 @@
       attribute: "path"
       value: "{{ syncthing_default_path }}"
   notify: Restart Syncthing
-
-- name: Use custom certificate for GUI
-  ansible.builtin.copy:
-      src: "{{ item.src }}"
-      dest: "{{ item.dest }}"
-      owner: "{{ syncthing_user }}"
-      group: "{{ syncthing_user }}"
-      mode: '0600'
-      remote_src: true
-      backup: true
-  loop:
-    - { src: "{{ syncthing_gui_cert }}", dest: "{{ syncthing_config_path }}/https-cert.pem" }
-    - { src: "{{ syncthing_gui_cert_key }}", dest: "{{ syncthing_config_path }}/https-key.pem" }
-  when:
-    - syncthing_gui_cert|length > 0
-    - syncthing_gui_cert_key|length > 0
