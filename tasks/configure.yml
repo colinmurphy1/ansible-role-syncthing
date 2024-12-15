@@ -18,13 +18,13 @@
 
 - name: Use custom certificate for GUI
   ansible.builtin.copy:
-      src: "{{ item.src }}"
-      dest: "{{ item.dest }}"
-      owner: "{{ syncthing_user }}"
-      group: "{{ syncthing_user }}"
-      mode: '0600'
-      remote_src: true
-      backup: true
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ syncthing_user }}"
+    group: "{{ syncthing_user }}"
+    mode: '0600'
+    remote_src: true
+    backup: true
   loop:
     - { src: "{{ syncthing_gui_cert }}", dest: "{{ syncthing_config_path }}/https-cert.pem" }
     - { src: "{{ syncthing_gui_cert_key }}", dest: "{{ syncthing_config_path }}/https-key.pem" }
