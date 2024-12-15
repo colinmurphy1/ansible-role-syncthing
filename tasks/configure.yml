@@ -31,6 +31,7 @@
   when:
     - syncthing_gui_cert|length > 0
     - syncthing_gui_cert_key|length > 0
+  notify: Restart Syncthing
 
 - name: Configure Syncthing
   become: true
