@@ -2,8 +2,8 @@
 
 - name: Include OS-specific vars
   ansible.builtin.include_vars: "{{ item }}"
-  with_first_found:
-    - "{{ ansible_os_family }}.yml"
+  with_items:
+    - "{{ ansible_facts['os_family'] }}.yml"
 
 - name: Create user for Syncthing
   ansible.builtin.include_tasks: user.yml
@@ -12,7 +12,7 @@
 - name: Add Syncthing APT repository (Debian/Ubuntu)
   ansible.builtin.include_tasks: apt-repo.yml
   when:
-    - ansible_os_family == "Debian"
+    - ansible_facts["os_family"] == "Debian"
     - syncthing_repo
 
 - name: Install Syncthing

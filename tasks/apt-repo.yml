@@ -7,13 +7,21 @@
     name: gpg
     state: present
 
-- name: Add Syncthing signing key
-  ansible.builtin.apt_key:
-    url: https://syncthing.net/release-key.gpg
-    state: present
+- name: Ensure the old repository file is absent
+  ansible.builtin.file:
+    path: /etc/apt/sources.list.d/apt_syncthing_net.list
+    state: absent
 
-- name: Add Syncthing repo
-  ansible.builtin.apt_repository:
-    repo: "deb https://apt.syncthing.net/ syncthing stable"
+- name: Add Syncthing APT repository
+  ansible.builtin.deb822_repository:
+    name: syncthing
+    types: deb
+    uris: https://apt.syncthing.net/
+    suites: syncthing
+    components: stable-v2
+    signed_by: https://syncthing.net/release-key.gpg
     state: present
-    update_cache: true
+  notify: APT Update
+
+- name: Run handlers now
+  ansible.builtin.meta: flush_handlers
